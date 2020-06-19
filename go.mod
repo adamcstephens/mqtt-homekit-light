@@ -1,4 +1,4 @@
-module github.com/brutella/hklight
+module github.com/adamcstephens/mqtt-homekit-light
 
 go 1.14
 

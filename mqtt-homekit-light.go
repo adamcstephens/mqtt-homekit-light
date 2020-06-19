@@ -27,6 +27,7 @@ func main() {
 		pin           = flag.String("pin", "32191123", "homekit PIN for pairing")
 		storagePath   = flag.String("storage-path", "./", "where to store persistent files")
 	)
+	flag.Parse()
 
 	co := mqtt.NewClientOptions()
 	co.AddBroker(*mqttURL)
