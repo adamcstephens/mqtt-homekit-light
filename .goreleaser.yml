@@ -25,3 +25,8 @@ dockers:
     image_templates:
       - docker.io/adamcstephens/mqtt-homekit-light:latest
       - docker.io/adamcstephens/mqtt-homekit-light:{{ .Tag }}
+  - goos: linux
+    goarch: arm64
+    image_templates:
+      - docker.io/adamcstephens/mqtt-homekit-light:latest
+      - docker.io/adamcstephens/mqtt-homekit-light:{{ .Tag }}
