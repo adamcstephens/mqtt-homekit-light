@@ -29,5 +29,10 @@ dockers:
       - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:latest
       - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:{{ .Tag }}
 
+nfpms:
+  - id: default
+    formats:
+      - deb
+
 snapshot:
   name_template: "{{ .Tag }}-next"
