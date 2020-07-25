@@ -1,5 +1,7 @@
 # mqtt-homekit-light
 
+![goreleaser](https://github.com/adamcstephens/mqtt-homekit-light/workflows/goreleaser/badge.svg)
+
 This creates a bridge between homekit and mqtt, specifically for a homekit light.
 
 ```bash
