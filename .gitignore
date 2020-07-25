@@ -1,3 +1,7 @@
 mqtt-homekit-light*
+*.entity
+configHash
+uuid
+version
 tmp/
 dist/
