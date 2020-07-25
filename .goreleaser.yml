@@ -1,6 +1,7 @@
 before:
   hooks:
     - go mod download
+
 builds:
   - env:
       - CGO_ENABLED=0
@@ -9,24 +10,28 @@ builds:
     goarch:
       - amd64
       - arm64
-checksum:
-  name_template: "checksums.txt"
-snapshot:
-  name_template: "{{ .Tag }}-next"
+
 changelog:
   sort: asc
   filters:
     exclude:
       - "^docs:"
       - "^test:"
+
+checksum:
+  name_template: "checksums.txt"
+
 dockers:
   - goos: linux
     goarch: amd64
     image_templates:
-      - docker.io/adamcstephens/mqtt-homekit-light:latest
-      - docker.io/adamcstephens/mqtt-homekit-light:{{ .Tag }}
+      - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:latest
+      - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:{{ .Tag }}
   - goos: linux
     goarch: arm64
     image_templates:
-      - docker.io/adamcstephens/mqtt-homekit-light:latest
-      - docker.io/adamcstephens/mqtt-homekit-light:{{ .Tag }}
+      - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:latest
+      - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:{{ .Tag }}
+
+snapshot:
+  name_template: "{{ .Tag }}-next"
