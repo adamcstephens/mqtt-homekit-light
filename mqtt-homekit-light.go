@@ -14,7 +14,6 @@ import (
 
 func init() {
 	logrus.SetOutput(os.Stdout)
-	logrus.SetLevel(logrus.DebugLevel)
 }
 
 func main() {
@@ -26,8 +25,13 @@ func main() {
 		mqttURL       = flag.String("mqtt", "mqtt://localhost:1883", "mqtt url")
 		pin           = flag.String("pin", "32191123", "homekit PIN for pairing")
 		storagePath   = flag.String("storage-path", "./", "where to store persistent files")
+		debug         = flag.Bool("debug", false, "Enable debugging")
 	)
 	flag.Parse()
+
+	if *debug {
+		logrus.SetLevel(logrus.DebugLevel)
+	}
 
 	co := mqtt.NewClientOptions()
 	co.AddBroker(*mqttURL)
@@ -58,6 +62,8 @@ func main() {
 	}
 
 	acc.Lightbulb.On.OnValueRemoteUpdate(func(on bool) {
+		logrus.Debugf("hap: %v", on)
+
 		if t := mqcli.Publish(fmt.Sprintf("%s/set", *mqttTopic), 0, false, fmt.Sprintf("%v", on)); t.Wait() && t.Error() != nil {
 			logrus.Errorf("Error: publishing %q", t.Error())
 		}
