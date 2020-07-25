@@ -2,8 +2,6 @@ name: goreleaser
 
 on:
   push:
-    tags:
-      - v.*
 
 jobs:
   goreleaser:
@@ -26,9 +24,19 @@ jobs:
           echo "${GITHUB_TOKEN}" | docker login docker.pkg.github.com -u adamcstephens --password-stdin
 
       - name: Run GoReleaser
+        if: success() && startsWith(github.ref, 'refs/tags/v')
         uses: goreleaser/goreleaser-action@v2
         with:
           version: latest
           args: release --rm-dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run GoReleaser in snapshot-mode
+        if: success() && startsWith(github.ref, 'refs/heads/main')
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          version: latest
+          args: release --snapshot --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
