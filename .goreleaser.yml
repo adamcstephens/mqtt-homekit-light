@@ -26,8 +26,8 @@ dockers:
     goarch: amd64
     dockerfile: Dockerfile
     image_templates:
-      - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:latest
-      - docker.pkg.github.com/adamcstephens/mqtt-homekit-light/release:{{ .Tag }}
+      - ghcr.io/adamcstephens/mqtt-homekit-light/release:latest
+      - ghcr.io/adamcstephens/mqtt-homekit-light/release:{{ .Tag }}
 
 nfpms:
   - id: default
