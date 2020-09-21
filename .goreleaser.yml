@@ -33,6 +33,7 @@ nfpms:
   - id: default
     formats:
       - deb
+      - rpm
 
 snapshot:
   name_template: "{{ .Tag }}-next"
