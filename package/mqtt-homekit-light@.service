@@ -1,0 +1,14 @@
+[Unit]
+Description=MQTT HomeKit Light service
+
+[Service]
+ExecStart=/usr/bin/mqtt-homekit-light -storage-path /var/lib/mqtt-homekit-light-%i
+Restart=on-failure
+RestartSec=10s
+needs 235 and leap only has 234
+DynamicUser=true
+StateDirectory=mqtt-homekit-light-%i
+User=mhl-%i
+
+[Install]
+WantedBy=default.target

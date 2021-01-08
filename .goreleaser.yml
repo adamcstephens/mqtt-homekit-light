@@ -31,9 +31,13 @@ dockers:
 
 nfpms:
   - id: default
+    bindir: /usr/bin
     formats:
       - deb
       - rpm
+    contents:
+      - src: package/mqtt-homekit-light@.service
+        dst: /usr/lib/systemd/system/mqtt-homekit-light@.service
 
 snapshot:
   name_template: "{{ .Tag }}-next"

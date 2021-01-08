@@ -1,4 +1,4 @@
-mqtt-homekit-light*
+/mqtt-homekit-light*
 *.entity
 configHash
 uuid
