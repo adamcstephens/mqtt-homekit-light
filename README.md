@@ -4,9 +4,12 @@
 
 This creates a bridge between homekit and mqtt, specifically for a homekit light.
 
+You can configure options using command line flags, or environment variables using the prefix `MHL_`.
+
 ```bash
- -> go run ./ -help
-Usage of /var/folders/3p/q9nkzynn60j6cbfhcykhh3340000z8/T/go-build214451856/b001/exe/mqtt-homekit-light:
+Usage of mqtt-homekit-light:
+  -debug
+        Enable debugging
   -manufacturer string
         homekit accessory manufacturer (default "hc")
   -mqtt string
@@ -21,7 +24,6 @@ Usage of /var/folders/3p/q9nkzynn60j6cbfhcykhh3340000z8/T/go-build214451856/b001
         homekit PIN for pairing (default "32191123")
   -storage-path string
         where to store persistent files (default "./")
-exit status 2
 ```
 
 ## Links

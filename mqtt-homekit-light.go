@@ -9,6 +9,7 @@ import (
 	"github.com/brutella/hc"
 	"github.com/brutella/hc/accessory"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
+	"github.com/peterbourgon/ff/v3"
 	"github.com/sirupsen/logrus"
 )
 
@@ -18,16 +19,17 @@ func init() {
 
 func main() {
 	var (
-		accessoryManu = flag.String("manufacturer", "hc", "homekit accessory manufacturer")
-		accessoryName = flag.String("name", "Light", "homekit accessory name")
-		mqttClientID  = flag.String("mqtt-client-id", "homekit-mqtt", "mqtt client ID")
-		mqttTopic     = flag.String("mqtt-topic", "homekit/light", "topic to listen for state, will call <mqtt-topic>/set when homekit triggers")
-		mqttURL       = flag.String("mqtt", "mqtt://localhost:1883", "mqtt url")
-		pin           = flag.String("pin", "32191123", "homekit PIN for pairing")
-		storagePath   = flag.String("storage-path", "./", "where to store persistent files")
-		debug         = flag.Bool("debug", false, "Enable debugging")
+		fs            = flag.NewFlagSet("mqtt-homekit-light", flag.ExitOnError)
+		accessoryManu = fs.String("manufacturer", "hc", "homekit accessory manufacturer")
+		accessoryName = fs.String("name", "Light", "homekit accessory name")
+		mqttClientID  = fs.String("mqtt-client-id", "homekit-mqtt", "mqtt client ID")
+		mqttTopic     = fs.String("mqtt-topic", "homekit/light", "topic to listen for state, will call <mqtt-topic>/set when homekit triggers")
+		mqttURL       = fs.String("mqtt", "mqtt://localhost:1883", "mqtt url")
+		pin           = fs.String("pin", "32191123", "homekit PIN for pairing")
+		storagePath   = fs.String("storage-path", "./", "where to store persistent files")
+		debug         = fs.Bool("debug", false, "Enable debugging")
 	)
-	flag.Parse()
+	ff.Parse(fs, os.Args[1:], ff.WithEnvVarPrefix("MHL"))
 
 	if *debug {
 		logrus.SetLevel(logrus.DebugLevel)
