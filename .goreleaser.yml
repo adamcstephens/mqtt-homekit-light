@@ -42,6 +42,8 @@ nfpms:
         dst: /usr/lib/systemd/system/mqtt-homekit-light@.service
     empty_folders:
       - /etc/mqtt-homekit-light
+    scripts:
+      postinstall: package/postinstall.sh
 
 snapshot:
   name_template: "{{ .Tag }}-next"
