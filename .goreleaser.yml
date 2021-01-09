@@ -38,6 +38,8 @@ nfpms:
     contents:
       - src: package/mqtt-homekit-light@.service
         dst: /usr/lib/systemd/system/mqtt-homekit-light@.service
+    empty_folders:
+      - /etc/mqtt-homekit-light
 
 snapshot:
   name_template: "{{ .Tag }}-next"

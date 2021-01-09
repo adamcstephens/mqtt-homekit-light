@@ -22,6 +22,7 @@ func main() {
 		fs            = flag.NewFlagSet("mqtt-homekit-light", flag.ExitOnError)
 		accessoryManu = fs.String("manufacturer", "hc", "homekit accessory manufacturer")
 		accessoryName = fs.String("name", "Light", "homekit accessory name")
+		config        = fs.String("config", "", "Config file to load settings from")
 		mqttClientID  = fs.String("mqtt-client-id", "homekit-mqtt", "mqtt client ID")
 		mqttTopic     = fs.String("mqtt-topic", "homekit/light", "topic to listen for state, will call <mqtt-topic>/set when homekit triggers")
 		mqttURL       = fs.String("mqtt", "mqtt://localhost:1883", "mqtt url")
@@ -29,7 +30,11 @@ func main() {
 		storagePath   = fs.String("storage-path", "./", "where to store persistent files")
 		debug         = fs.Bool("debug", false, "Enable debugging")
 	)
-	ff.Parse(fs, os.Args[1:], ff.WithEnvVarPrefix("MHL"))
+	if *config == "" {
+		ff.Parse(fs, os.Args[1:], ff.WithEnvVarPrefix("MHL"))
+	} else {
+		ff.Parse(fs, os.Args[1:], ff.WithEnvVarPrefix("MHL"), ff.WithConfigFileFlag(*config), ff.WithConfigFileParser(ff.PlainParser))
+	}
 
 	if *debug {
 		logrus.SetLevel(logrus.DebugLevel)

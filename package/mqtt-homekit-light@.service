@@ -2,8 +2,9 @@
 Description=MQTT HomeKit Light service
 
 [Service]
+Environment=CONFIG_FILE=/etc/mqtt-homekit-light/%i.conf
 EnvironmentFile=/etc/default/mqtt-homekit-light-%i
-ExecStart=/usr/bin/mqtt-homekit-light -storage-path /var/lib/mqtt-homekit-light-%i
+ExecStart=/usr/bin/mqtt-homekit-light -storage-path /var/lib/mqtt-homekit-light-%i -config $CONFIG_FILE
 Restart=on-failure
 RestartSec=10s
 DynamicUser=true
