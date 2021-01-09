@@ -31,6 +31,8 @@ dockers:
 
 nfpms:
   - id: default
+    maintainer: Adam Stephens <releases@valkor.net>
+    description: Bridge a virtual homekit light to mqtt.
     bindir: /usr/bin
     formats:
       - deb

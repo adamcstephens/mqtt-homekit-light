@@ -2,7 +2,7 @@
 
 ![goreleaser](https://github.com/adamcstephens/mqtt-homekit-light/workflows/goreleaser/badge.svg)
 
-This creates a bridge between homekit and mqtt, specifically for a homekit light.
+This creates a bridge between virtual homekit light and mqtt, allowing one to toggle an mqtt topic using homekit.
 
 You can configure options using command line flags, or environment variables using the prefix `MHL_`.
 
