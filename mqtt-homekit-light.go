@@ -27,7 +27,7 @@ func main() {
 		accessoryName = fs.String("name", "Light", "homekit accessory name")
 		mqttClientID  = fs.String("mqtt-client-id", "homekit-mqtt", "mqtt client ID")
 		mqttTopic     = fs.String("mqtt-topic", "homekit/light", "topic to listen for state, will call <mqtt-topic>/set when homekit triggers")
-		mqttURL       = fs.String("mqtt", "mqtt://localhost:1883", "mqtt url")
+		mqttURL       = fs.String("mqtt", "mqtt://mqtt:1883", "mqtt url")
 		pin           = fs.String("pin", "32191123", "homekit PIN for pairing")
 		storagePath   = fs.String("storage-path", "./", "where to store persistent files")
 	)

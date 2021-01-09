@@ -50,6 +50,8 @@ MHL_MQTT_CLIENT_ID=myclient mqtt-homekit-light
 
 ## Running with systemd
 
+Requires systemd 235 or user due to the use of [dynamic users](http://0pointer.net/blog/dynamic-users-with-systemd.html). Tested on versions 246 and 247.
+
 The systemd service can be used to run multiple instances using a systemd template unit.
 
 1. Create a JSON config file in `/etc/mqtt-homekit-light/<name>.json`
