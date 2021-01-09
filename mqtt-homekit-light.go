@@ -19,22 +19,20 @@ func init() {
 
 func main() {
 	var (
-		fs            = flag.NewFlagSet("mqtt-homekit-light", flag.ExitOnError)
+		fs    = flag.NewFlagSet("mqtt-homekit-light", flag.ExitOnError)
+		_     = fs.String("config", "", "Config file to load settings from")
+		debug = fs.Bool("debug", false, "Enable debugging")
+
 		accessoryManu = fs.String("manufacturer", "hc", "homekit accessory manufacturer")
 		accessoryName = fs.String("name", "Light", "homekit accessory name")
-		config        = fs.String("config", "", "Config file to load settings from")
 		mqttClientID  = fs.String("mqtt-client-id", "homekit-mqtt", "mqtt client ID")
 		mqttTopic     = fs.String("mqtt-topic", "homekit/light", "topic to listen for state, will call <mqtt-topic>/set when homekit triggers")
 		mqttURL       = fs.String("mqtt", "mqtt://localhost:1883", "mqtt url")
 		pin           = fs.String("pin", "32191123", "homekit PIN for pairing")
 		storagePath   = fs.String("storage-path", "./", "where to store persistent files")
-		debug         = fs.Bool("debug", false, "Enable debugging")
 	)
-	if *config == "" {
-		ff.Parse(fs, os.Args[1:], ff.WithEnvVarPrefix("MHL"))
-	} else {
-		ff.Parse(fs, os.Args[1:], ff.WithEnvVarPrefix("MHL"), ff.WithConfigFileFlag(*config), ff.WithConfigFileParser(ff.PlainParser))
-	}
+	logrus.Info("config")
+	ff.Parse(fs, os.Args[1:], ff.WithEnvVarPrefix("MHL"), ff.WithConfigFileFlag("config"), ff.WithConfigFileParser(ff.JSONParser))
 
 	if *debug {
 		logrus.SetLevel(logrus.DebugLevel)
