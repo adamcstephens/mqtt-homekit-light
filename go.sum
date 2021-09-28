@@ -14,8 +14,8 @@ github.com/miekg/dns v1.1.1/go.mod h1:W1PPwlIAgtquWBMBEV9nkV9Cazfe8ScdGz/Lj7v3Nr
 github.com/miekg/dns v1.1.4 h1:rCMZsU2ScVSYcAsOXgmC6+AKOK+6pmQTOcw03nfwYV0=
 github.com/miekg/dns v1.1.4/go.mod h1:W1PPwlIAgtquWBMBEV9nkV9Cazfe8ScdGz/Lj7v3Nrg=
 github.com/pelletier/go-toml v1.6.0/go.mod h1:5N711Q9dKgbdkxHL+MEfF31hpT7l0S0s/t2kKREewys=
-github.com/peterbourgon/ff/v3 v3.1.0 h1:5JAeDK5j/zhKFjyHEZQXwXBoDijERaos10RE+xamOsY=
-github.com/peterbourgon/ff/v3 v3.1.0/go.mod h1:XNJLY8EIl6MjMVjBS4F0+G0LYoAqs0DTa4rmHHukKDE=
+github.com/peterbourgon/ff/v3 v3.1.1 h1:HLeFQ0vgECOALnkCCLn+wj4PU8JALH5xbhalFCiywDY=
+github.com/peterbourgon/ff/v3 v3.1.1/go.mod h1:rILkXqASXU8tch/bjeBNaBopJc5+ni/54McP3wnhAS0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sirupsen/logrus v1.8.1 h1:dJKuHgqk1NNQlqoA6BTlM1Wf9DOH3NBjQyu0h9+AZZE=
