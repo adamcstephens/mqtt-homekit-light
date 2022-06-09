@@ -40,9 +40,10 @@ nfpms:
     contents:
       - src: package/mqtt-homekit-light@.service
         dst: /usr/lib/systemd/system/mqtt-homekit-light@.service
-    empty_folders:
-      - /etc/mqtt-homekit-light
-      - /var/lib/mqtt-homekit-light
+      - dst: /etc/mqtt-homekit-light
+        type: dir
+      - dst: /var/lib/mqtt-homekit-light
+        type: dir
     scripts:
       postinstall: package/postinstall.sh
       preremove: package/preremove.sh
